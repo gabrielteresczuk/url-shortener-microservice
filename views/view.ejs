@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>URL Shortener Microservice | freeCodeCamp.org</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png"
+    />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <h1>URL Shortener Microservice</h1>
+    <main>
+      <section>
+        <form action="api/shorturl" method="POST">
+          <fieldset>
+            <legend>URL Shortener</legend>
+            <label for="url_input">URL:</label>
+            <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
+            <input type="submit" value="POST URL" />
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <section class="lista">
+      <h3>Urls acortadas</h3>
+      <% if(db.length > 0){ %> 
+        <ul class="lista__url">
+        <%db.forEach(function(ele) {%>
+              <li><a href="/api/shorturl/<%=ele.id%>"><%=ele.original_url%></a></li>
+        <%});%>
+      <% } else{ %>
+        <ul class="lista__url">
+          <li>No se encuentran urls cargadas ...</li>
+        </ul>
+      <% } %>   
+        
+    </section>
+
+    <footer>
+      <p>By <a href="https://github.com/gabrielteresczuk">Teresczuk Gabriel</a></p>
+    </footer>
+  </body>
+</html>
